@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.StudentCourseDao">
+
+    <select id="find" resultType="StudentCourse">
+        select course,grade,id from studentcourse
+        where id=#{id}
+    </select>
+
+    <delete id="delete">
+        delete from studentcourse
+        where id=#{id}
+    </delete>
+
+    <update id="Update">
+        update studentcourse
+        set grade=#{grade}
+        where id=#{id}
+    </update>
+</mapper>

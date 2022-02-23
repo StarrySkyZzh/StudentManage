@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TeacherDao">
+
+    <select id="find" parameterType="User" resultType="Teacher">
+        select id,name from teacher
+        where id=#{UserId} and name=#{UserName} and "老师"=#{capacity}
+    </select>
+
+    <select id="findall" resultType="StudentCourse">
+        select * from StudentCourse
+        where course in(select course from teacher
+                         where id=#{id})
+    </select>
+
+    <select id="analysis" resultType="Analysis">
+        SELECT classes,course,MAX(grade) as max,MIN(grade) as min,AVG(grade) as avg FROM StudentCourse
+        WHERE course IN (SELECT course FROM teacher
+                         WHERE id=#{id})
+        GROUP BY classes
+    </select>
+</mapper>

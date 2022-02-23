@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>学科成绩</title>
+
+    <<link th:replace="common::commonheader">
+</head>
+
+<body class="sticky-header">
+    <section>
+        <div th:insert="common::leftmenu"></div>
+
+        <!-- main content start-->
+        <div class="main-content">
+
+            <div th:insert="common::headmenu"></div>
+
+            <!-- 页面标题开始-->
+            <div class="page-heading">
+                <h3>学科成绩</h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="main">主页</a>
+                    </li>
+                    <li>
+                        <a href="#">查看成绩</a>
+                    </li>
+                    <li class="active">学科成绩</li>
+                </ul>
+            </div>
+            <!-- 页面标题结束-->
+
+            <!--内容区域开始-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                <span class="tools pull-right">
+                                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                    <a href="javascript:;" class="fa fa-times"></a>
+                                </span>
+                            </header>
+                            <div class="panel-body">
+                                <table class="table  table-hover general-table">
+                                    <thead>
+                                        <tr>
+                                            <th><font size="4">课程</font></th>
+                                            <th><font size="4">成绩</font></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeX" th:each="student: ${students}">
+                                        <td th:text="${student.course}"></td>
+                                        <td th:text="${student.grade}"></td>
+                                        <!--<td>
+                                            <a th:href="@{/user/delete/{id}(id=${user.id},pn=${users.current})}" class="btn btn-danger btn-sm" type="button">删除</a>
+                                        </td>-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!--内容区域结束-->
+
+            <!--footer  start-->
+            <footer>2014 &copy; AdminEx by ThemeBucket</footer>
+            <!--footer  end--> </div>
+        <!-- main content end-->
+    </section>
+
+    <div th:replace="common::#commonscript"></div>
+
+
+</body>
+
+</html>
